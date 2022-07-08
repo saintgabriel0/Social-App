@@ -27,3 +27,6 @@ then(() => app.listen(PORT, () =>
 console.log(`Server & DB listening on http://localhost:${PORT}`)))
 .catch((error) => console.log(error))
 
+// usage of routes
+// ! testing the routes will remove the auth and added later if there's no bug
+app.use('/api/v1', AuthRoute)
