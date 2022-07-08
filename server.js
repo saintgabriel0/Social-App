@@ -7,7 +7,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import client  from 'dotenv';
+import dotenv from 'dotenv';
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,6 +18,9 @@ app.use(bodyParser.json({limit: '30mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 app.use(express.json());
 
-mongoose.createConnection(client).then(() => app.listen(PORT, `Server & DB listening on http://localhost:${PORT}`))
-
+dotenv.config();
+mongoose.connect(process.env.MONGO_URI).
+then(() => app.listen(PORT, () => 
+console.log(`Server & DB listening on http://localhost:${PORT}`)))
+.catch((error) => console.log(error))
 
