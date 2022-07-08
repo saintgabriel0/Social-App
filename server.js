@@ -11,8 +11,6 @@ import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from './Routes/UserRoute.js'
 
-// Routes
-
 const PORT = process.env.PORT || 3000;
 // Express app running
 const app = express();
@@ -30,3 +28,4 @@ console.log(`Server & DB listening on http://localhost:${PORT}`)))
 
 // usage of routes
 app.use('/api/v1', AuthRoute)
+app.use('/api/v1', UserRoute)
