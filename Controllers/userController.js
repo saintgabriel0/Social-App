@@ -6,15 +6,21 @@ export const getUser = async(req, res) =>{
 
     try{
         const user = await UserModel.findById(id);
-        //! check user if user de db
+        //! getting back only the name of the users
         if(user)
         {
             const {password, ...otherDetails} = user._doc
 
             res.status(200).json(otherDetails)
-        }
+         }
+         // ! check if use exist in database
+         else
+         { 
+            res.status(404).json('No such user exists')
+         }
+        
     } catch(error){
-        res.status(500).json({error})
+        res.status(500).json(error)
     }
 
 }
