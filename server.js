@@ -28,4 +28,4 @@ console.log(`Server & DB listening on http://localhost:${PORT}`)))
 
 // usage of routes
 app.use('/api/v1', AuthRoute)
-app.use('/api/v1', UserRoute)
+app.use('/api/v1/user', UserRoute)

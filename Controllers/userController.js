@@ -9,7 +9,9 @@ export const getUser = async(req, res) =>{
         //! check user if user de db
         if(user)
         {
-            res.status(200).json(user)
+            const {password, ...otherDetails} = user._doc
+
+            res.status(200).json(otherDetails)
         }
     } catch(error){
         res.status(500).json({error})
