@@ -7,6 +7,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import client  from 'dotenv';
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,9 +18,6 @@ app.use(bodyParser.json({limit: '30mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 app.use(express.json());
 
-app.get('/hello', (req, res) => {
-    req.json({msg:"Greetings"})
-})
-app.listen(PORT, () => {
-    console.log(`Server running on http:localhost:${PORT}`)
-})
+mongoose.createConnection(client).then(() => app.listen(PORT, `Server & DB listening on http://localhost:${PORT}`))
+
+
