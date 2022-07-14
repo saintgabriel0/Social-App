@@ -53,3 +53,22 @@ export const updateUser = async(req, res) => {
 }
 
 //! Delete a user
+export const deleteUser = async (req, res) => {
+    const id = req.params.id
+    
+    const {currentUserAdminStatus, currentUserId} = req.body
+    if(currentUserID === id || currentUserAdminStatus)
+    {
+        try{
+            await UserModel.findByIdAndDelete(id)
+            res.status(200).json('User deleted successfully')
+        } catch(error){
+            res.status(500).json(error);
+            console.log(error);
+        }
+    } else{
+        res.status(403).json('Access Denied! you can only delete your own profile');
+
+    }
+
+}
