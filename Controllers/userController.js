@@ -56,8 +56,8 @@ export const updateUser = async(req, res) => {
 export const deleteUser = async (req, res) => {
     const id = req.params.id
     
-    const {currentUserAdminStatus, currentUserId} = req.body
-    if(currentUserID === id || currentUserAdminStatus)
+    const {currentUserId, currentUserAdminStatus} = req.body
+    if(currentUserId === id || currentUserAdminStatus)
     {
         try{
             await UserModel.findByIdAndDelete(id)
