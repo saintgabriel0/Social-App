@@ -51,3 +51,5 @@ export const updateUser = async(req, res) => {
         res.status(403).json('Access Denied! you can only update your own profile');
     }
 }
+
+//! Delete a user
